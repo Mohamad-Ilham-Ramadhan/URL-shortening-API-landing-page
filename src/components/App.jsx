@@ -2,6 +2,7 @@ import React from "react";
 import { makeStyles } from "@material-ui/core/styles";
 
 import Header from "./Header";
+import Main from "./Main";
 
 const useStyles = makeStyles((theme) => ({
   cyan: {
@@ -39,6 +40,7 @@ export default function App() {
   return (
     <React.Fragment>
       <Header />
+      <Main />
       <div className={styles.cyan}>Cyan</div>
       <div className={styles.darkViolet}>Dark violet</div>
       <div className={styles.red}>Red</div>

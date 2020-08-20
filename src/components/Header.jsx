@@ -103,7 +103,7 @@ export default function Header() {
     setShow((show) => !show);
   }
   return (
-    <React.Fragment>
+    <header>
       <AppBar className={styles.root} position="static" elevation={0}>
         <Toolbar>
           <Link className={styles.logo} href="#">
@@ -167,6 +167,6 @@ export default function Header() {
           </Paper>
         </Container>
       )}
-    </React.Fragment>
+    </header>
   );
 }

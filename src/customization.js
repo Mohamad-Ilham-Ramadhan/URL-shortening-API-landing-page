@@ -32,6 +32,13 @@ const customizedTheme = createMuiTheme({
   },
   typography: {
     fontFamily: "Poppins",
+    h1: {
+      letterSpacing: "-0.1rem",
+    },
+    subtitle1: {
+      fontSize: "1.15rem",
+      color: grayishViolet,
+    },
   },
   palette: {
     primary: {
@@ -63,7 +70,13 @@ const customizedTheme = createMuiTheme({
     },
     MuiContainer: {
       root: {
-        padding: [0, 24],
+        paddingLeft: theme.spacing(3),
+        paddingRight: theme.spacing(3),
+      },
+    },
+    MuiTypography: {
+      root: {
+        color: veryDarkViolet,
       },
     },
     MuiButton: {
