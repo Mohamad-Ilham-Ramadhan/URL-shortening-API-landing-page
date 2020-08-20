@@ -1,4 +1,4 @@
-import { createMuiTheme } from "@material-ui/core/styles";
+import { createMuiTheme, lighten } from "@material-ui/core/styles";
 import { poppins500, poppins700 } from "./fonts";
 
 // <== Colors ==>
@@ -21,6 +21,15 @@ const veryDarkViolet = "hsl(260, 8%, 14%)";
 const theme = createMuiTheme({});
 
 const customizedTheme = createMuiTheme({
+  breakpoints: {
+    values: {
+      xs: 0,
+      sm: 576,
+      md: 768,
+      lg: 992,
+      xl: 1200,
+    },
+  },
   typography: {
     fontFamily: "Poppins",
   },
@@ -45,6 +54,27 @@ const customizedTheme = createMuiTheme({
         "@font-face": [poppins500, poppins700],
         body: {
           fontFamily: "Poppins, Roboto, Helvetica, Arial, sans-serif",
+          backgroundColor: "white",
+        },
+        ".MuiButton-root.pill": {
+          borderRadius: 150,
+        },
+      },
+    },
+    MuiContainer: {
+      root: {
+        padding: [0, 24],
+      },
+    },
+    MuiButton: {
+      root: {
+        textTransform: "none",
+      },
+      containedPrimary: {
+        color: "white",
+        fontWeight: 700,
+        "&:hover": {
+          backgroundColor: lighten(cyan, 0.5),
         },
       },
     },
