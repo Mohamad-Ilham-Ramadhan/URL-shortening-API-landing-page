@@ -10,7 +10,8 @@ import InputBase from "@material-ui/core/InputBase";
 import FormControl from "@material-ui/core/FormControl";
 
 import illustration from "../images/illustration-working.svg";
-import bgShorten from "../images/bg-shorten-mobile.svg";
+import bgShortenMobile from "../images/bg-shorten-mobile.svg";
+import bgShortenDesktop from "../images/bg-shorten-desktop.svg";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -51,15 +52,19 @@ const useStyles = makeStyles((theme) => ({
   },
   formShorten: {
     padding: theme.spacing(3),
-    backgroundImage: `url('${bgShorten}')`,
+    backgroundImage: `url('${bgShortenMobile}')`,
     backgroundRepeat: "no-repeat",
     backgroundPosition: "top right",
     backgroundColor: theme.palette.primary.darkViolet,
     textAlign: "center",
     transform: "translateY(-50%)",
+    [theme.breakpoints.up("md")]: {
+      backgroundImage: `url('${bgShortenDesktop}')`,
+    },
   },
   inputShorten: {
     marginBottom: 16,
+    width: "100%",
     "& .MuiInputBase-root": {
       color: "#232127",
       padding: [14.5, 16],
@@ -69,6 +74,7 @@ const useStyles = makeStyles((theme) => ({
       lineHeight: 1.75,
       "&.validate": {
         border: `${theme.palette.secondary.main} solid 3px`,
+        padding: [11.5, 16],
         "& input::placeholder": {
           color: theme.palette.secondary.main,
         },
@@ -88,6 +94,9 @@ const useStyles = makeStyles((theme) => ({
       fontStyle: "italic",
       fontSize: "0.75rem",
       marginTop: 5,
+    },
+    [theme.breakpoints.up("md")]: {
+      marginBottom: 0,
     },
   },
   buttonShorten: {
@@ -150,25 +159,31 @@ export default function Main() {
       <section className={styles.content}>
         <Container>
           <Paper className={styles.formShorten} disableElevation>
-            <FormControl className={styles.inputShorten}>
-              <InputBase
-                value={link}
-                onChange={onChange}
-                placeholder="Shorten a link here..."
-                className={validate ? "validate" : null}
-              />
-              {validate && <Typography>Please add a link</Typography>}
-            </FormControl>
-            <Button
-              onClick={onClick}
-              className={styles.buttonShorten}
-              variant="contained"
-              color="primary"
-              fullWidth
-              disableElevation
-            >
-              Shorten It!
-            </Button>
+            <Grid container spacing={2}>
+              <Grid item xs={12} md={9}>
+                <FormControl className={styles.inputShorten}>
+                  <InputBase
+                    value={link}
+                    onChange={onChange}
+                    placeholder="Shorten a link here..."
+                    className={validate ? "validate" : null}
+                  />
+                  {validate && <Typography>Please add a link</Typography>}
+                </FormControl>
+              </Grid>
+              <Grid item xs={12} md={3}>
+                <Button
+                  onClick={onClick}
+                  className={styles.buttonShorten}
+                  variant="contained"
+                  color="primary"
+                  fullWidth
+                  disableElevation
+                >
+                  Shorten It!
+                </Button>
+              </Grid>
+            </Grid>
           </Paper>
         </Container>
       </section>
