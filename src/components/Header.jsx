@@ -69,7 +69,6 @@ const useStyles = makeStyles((theme) => ({
     position: "absolute",
 
     "& .MuiPaper-root": {
-      borderRadius: 8,
       backgroundColor: theme.palette.primary.darkViolet,
       textAlign: "center",
       padding: [24, 24],

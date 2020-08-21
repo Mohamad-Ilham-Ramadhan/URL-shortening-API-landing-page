@@ -91,6 +91,16 @@ const customizedTheme = createMuiTheme({
         },
       },
     },
+    MuiPaper: {
+      rounded: {
+        borderRadius: theme.spacing(1),
+      },
+    },
+    MuiOutlinedInput: {
+      root: {
+        backgroundColor: "white",
+      },
+    },
   },
 });
 
