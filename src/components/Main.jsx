@@ -2,9 +2,10 @@ import React, { useState } from "react";
 import { makeStyles, lighten } from "@material-ui/core/styles";
 import Container from "@material-ui/core/Container";
 import Grid from "@material-ui/core/Grid";
+import Divider from "@material-ui/core/Divider";
 import Typography from "@material-ui/core/Typography";
+import Link from "@material-ui/core/Link";
 import Button from "@material-ui/core/Button";
-import TextField from "@material-ui/core/TextField";
 import Paper from "@material-ui/core/Paper";
 import InputBase from "@material-ui/core/InputBase";
 import FormControl from "@material-ui/core/FormControl";
@@ -108,21 +109,43 @@ const useStyles = makeStyles((theme) => ({
       lineHeight: "normal",
     },
   },
+  shortenedLink: {
+    borderRadius: 6,
+  },
+  gridShortenedLinkOriginal: {
+    padding: [14, 16],
+  },
+  gridShortenedLinkShortened: {
+    padding: [14, 16],
+    "& .MuiTypography-root": {
+      marginBottom: 12,
+    },
+    "& .MuiButton-root": {
+      fontSize: "1rem",
+      "&.copied": {
+        backgroundColor: theme.palette.primary.darkViolet,
+      },
+    },
+  },
 }));
 export default function Main() {
   const styles = useStyles();
   const [link, setLink] = useState("");
   const [validate, setValidate] = useState(false);
+  const [copied, setCopied] = useState(false);
 
   function onChange(e) {
     setLink(e.target.value);
   }
-  function onClick(e) {
+  function onClickShorten() {
     if (link.length == 0) {
       setValidate(true);
     } else {
       setValidate(false);
     }
+  }
+  function onClickCopy() {
+    setCopied(true);
   }
   return (
     <main className={styles.root}>
@@ -158,7 +181,7 @@ export default function Main() {
       </section>
       <section className={styles.content}>
         <Container>
-          <Paper className={styles.formShorten} disableElevation>
+          <Paper className={styles.formShorten} elevation={0}>
             <Grid container spacing={2}>
               <Grid item xs={12} md={9}>
                 <FormControl className={styles.inputShorten}>
@@ -173,7 +196,7 @@ export default function Main() {
               </Grid>
               <Grid item xs={12} md={3}>
                 <Button
-                  onClick={onClick}
+                  onClick={onClickShorten}
                   className={styles.buttonShorten}
                   variant="contained"
                   color="primary"
@@ -181,6 +204,31 @@ export default function Main() {
                   disableElevation
                 >
                   Shorten It!
+                </Button>
+              </Grid>
+            </Grid>
+          </Paper>
+          <Paper className={styles.shortenedLink} elevation={0}>
+            <Grid container>
+              <Grid className={styles.gridShortenedLinkOriginal} item xs={12}>
+                <Typography>https://www.frontendmentor.io</Typography>
+              </Grid>
+              <Divider fullWidth />
+              <Grid className={styles.gridShortenedLinkShortened} item xs={12}>
+                <Typography>
+                  <Link href="https://rel.ink/kzw08n">
+                    https://rel.ink/kzw08n
+                  </Link>
+                </Typography>
+                <Button
+                  className={copied ? "copied" : null}
+                  onClick={onClickCopy}
+                  variant="contained"
+                  color="primary"
+                  disableElevation
+                  fullWidth
+                >
+                  {copied ? "Copied!" : "Copy"}
                 </Button>
               </Grid>
             </Grid>

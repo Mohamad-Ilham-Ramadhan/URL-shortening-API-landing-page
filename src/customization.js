@@ -82,6 +82,7 @@ const customizedTheme = createMuiTheme({
     MuiButton: {
       root: {
         textTransform: "none",
+        borderRadius: 6,
       },
       containedPrimary: {
         color: "white",
@@ -99,6 +100,11 @@ const customizedTheme = createMuiTheme({
     MuiOutlinedInput: {
       root: {
         backgroundColor: "white",
+      },
+    },
+    MuiDivider: {
+      root: {
+        width: "100%",
       },
     },
   },
