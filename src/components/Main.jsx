@@ -1,5 +1,6 @@
 import React, { useState } from "react";
-import { makeStyles, lighten } from "@material-ui/core/styles";
+import { makeStyles, useTheme, lighten } from "@material-ui/core/styles";
+import useMediaQuery from "@material-ui/core/useMediaQuery";
 import Container from "@material-ui/core/Container";
 import Grid from "@material-ui/core/Grid";
 import Divider from "@material-ui/core/Divider";
@@ -109,19 +110,45 @@ const useStyles = makeStyles((theme) => ({
       lineHeight: "normal",
     },
   },
-  shortenedLink: {
+  PaperShortenedLink: {
     borderRadius: 6,
+    marginBottom: 16,
+    "& p.MuiTypography-root": {
+      [theme.breakpoints.up("lg")]: {
+        fontSize: "1.2rem",
+      },
+    },
   },
   gridShortenedLinkOriginal: {
     padding: [14, 16],
+    display: "flex",
+    [theme.breakpoints.up("lg")]: {
+      alignItems: "center",
+    },
   },
   gridShortenedLinkShortened: {
     padding: [14, 16],
-    "& .MuiTypography-root": {
+    [theme.breakpoints.up("lg")]: {
+      display: "flex",
+      justifyContent: "flex-end",
+      alignItems: "center",
+    },
+    "& p.MuiTypography-root": {
       marginBottom: 12,
+      [theme.breakpoints.up("lg")]: {
+        marginBottom: 0,
+        marginRight: 24,
+        display: "inline-flex",
+        alignItems: "center",
+      },
     },
     "& .MuiButton-root": {
       fontSize: "1rem",
+      [theme.breakpoints.up("lg")]: {
+        fontSize: ".9rem",
+        padding: [7, 16],
+        minWidth: "6.5rem",
+      },
       "&.copied": {
         backgroundColor: theme.palette.primary.darkViolet,
       },
@@ -130,6 +157,8 @@ const useStyles = makeStyles((theme) => ({
 }));
 export default function Main() {
   const styles = useStyles();
+  const theme = useTheme();
+  const upLg = useMediaQuery(theme.breakpoints.up("lg"));
   const [link, setLink] = useState("");
   const [validate, setValidate] = useState(false);
   const [copied, setCopied] = useState(false);
@@ -208,13 +237,23 @@ export default function Main() {
               </Grid>
             </Grid>
           </Paper>
-          <Paper className={styles.shortenedLink} elevation={0}>
+          <Paper className={styles.PaperShortenedLink} elevation={0}>
             <Grid container>
-              <Grid className={styles.gridShortenedLinkOriginal} item xs={12}>
+              <Grid
+                className={styles.gridShortenedLinkOriginal}
+                item
+                xs={12}
+                lg
+              >
                 <Typography>https://www.frontendmentor.io</Typography>
               </Grid>
-              <Divider fullWidth />
-              <Grid className={styles.gridShortenedLinkShortened} item xs={12}>
+              {upLg ? null : <Divider fullWidth />}
+              <Grid
+                className={styles.gridShortenedLinkShortened}
+                item
+                xs={12}
+                lg
+              >
                 <Typography>
                   <Link href="https://rel.ink/kzw08n">
                     https://rel.ink/kzw08n
@@ -226,7 +265,7 @@ export default function Main() {
                   variant="contained"
                   color="primary"
                   disableElevation
-                  fullWidth
+                  fullWidth={upLg ? false : true}
                 >
                   {copied ? "Copied!" : "Copy"}
                 </Button>
