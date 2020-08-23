@@ -162,40 +162,79 @@ const useStyles = makeStyles((theme) => ({
   title: {
     marginTop: 88,
     marginBottom: 56,
-    width: 400,
     marginRight: "auto",
     marginLeft: "auto",
     "& h2": {
       marginBottom: 20,
     },
+    [theme.breakpoints.up("md")]: {
+      width: 400,
+    },
   },
   gridContainerCards: {
+    [theme.breakpoints.up("md")]: {
+      "& .MuiPaper-root": {
+        textAlign: "left",
+      },
+      "& .connector": {
+        top: "50%",
+        left: "unset !important",
+        right: "-20%",
+        width: "100px !important",
+        bottom: "unset !important",
+        height: "10px !important",
+        transform: "unset !important",
+      },
+      "& .MuiGrid-item:nth-child(2)": {
+        "& .MuiPaper-root": {
+          marginTop: 44,
+        },
+      },
+      "& .MuiGrid-item:nth-child(3)": {
+        "& .MuiPaper-root": {
+          marginTop: 88,
+        },
+      },
+    },
+    "& .connector": {
+      zIndex: -1,
+      position: "absolute",
+      backgroundColor: theme.palette.primary.main,
+      bottom: -82,
+      left: "50%",
+      transform: "translateX(-50%)",
+      width: 8,
+      height: 100,
+    },
     "& .MuiPaper-root": {
       position: "relative",
       zIndex: 2,
-      textAlign: "left",
-      paddingBottom: 40,
+      textAlign: "center",
+      marginTop: 80,
     },
-    "& .MuiGrid-item:nth-child(2)": {
+    "& .MuiGrid-item:first-child": {
       "& .MuiPaper-root": {
-        marginTop: 44,
+        marginTop: 0,
       },
     },
-    "& .MuiGrid-item:nth-child(3)": {
-      "& .MuiPaper-root": {
-        marginTop: 88,
-      },
-    },
+
     "& .MuiContainer-root": {
       backgroundColor: "white",
       borderRadius: 8,
-      padding: [0, 32],
+      padding: {
+        top: 0,
+        right: 32,
+        left: 32,
+        bottom: 40,
+      },
     },
-    "& .avatar": {
+    "& .MuiAvatar-root": {
       width: 88,
       height: 88,
       padding: 24,
       marginBottom: -8,
+      marginLeft: "auto",
+      marginRight: "auto",
       backgroundColor: theme.palette.primary.darkViolet,
       transform: "translateY(-44px)",
     },
@@ -203,15 +242,6 @@ const useStyles = makeStyles((theme) => ({
       marginBottom: 16,
     },
     "& p": {},
-    "& .connector": {
-      position: "absolute",
-      top: "50%",
-      right: "-20%",
-      zIndex: -1,
-      height: 10,
-      width: 100,
-      backgroundColor: theme.palette.primary.main,
-    },
   },
 }));
 export default function Main() {
@@ -345,7 +375,6 @@ export default function Main() {
               <Paper className={styles.card} elevation={0}>
                 <Container>
                   <Avatar
-                    className="avatar"
                     src={iconBrandRecognition}
                     imgProps={{ role: "presentation" }}
                   />
@@ -363,7 +392,6 @@ export default function Main() {
               <Paper className={styles.card} elevation={0}>
                 <Container>
                   <Avatar
-                    className="avatar"
                     src={iconDetailedRecords}
                     imgProps={{ role: "presentation" }}
                   />
@@ -381,7 +409,6 @@ export default function Main() {
               <Paper className={styles.card} elevation={0}>
                 <Container>
                   <Avatar
-                    className="avatar"
                     src={iconFullyCustomizable}
                     imgProps={{ role: "presentation" }}
                   />
