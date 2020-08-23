@@ -10,10 +10,14 @@ import Button from "@material-ui/core/Button";
 import Paper from "@material-ui/core/Paper";
 import InputBase from "@material-ui/core/InputBase";
 import FormControl from "@material-ui/core/FormControl";
+import Avatar from "@material-ui/core/Avatar";
 
 import illustration from "../images/illustration-working.svg";
 import bgShortenMobile from "../images/bg-shorten-mobile.svg";
 import bgShortenDesktop from "../images/bg-shorten-desktop.svg";
+import iconBrandRecognition from "../images/icon-brand-recognition.svg";
+import iconDetailedRecords from "../images/icon-detailed-records.svg";
+import iconFullyCustomizable from "../images/icon-fully-customizable.svg";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -29,8 +33,6 @@ const useStyles = makeStyles((theme) => ({
     paddingTop: theme.spacing(3),
 
     "& h1": {
-      fontSize: "2.65rem",
-      fontWeight: 700,
       marginBottom: theme.spacing(2),
     },
     "& p": {
@@ -50,7 +52,9 @@ const useStyles = makeStyles((theme) => ({
   },
   // Content
   content: {
-    backgroundColor: lighten(theme.palette.neutral.grayishViolet, 0.825),
+    backgroundColor: lighten(theme.palette.neutral.grayishViolet, 0.875),
+    textAlign: "center",
+    paddingBottom: 120,
   },
   formShorten: {
     padding: theme.spacing(3),
@@ -135,6 +139,7 @@ const useStyles = makeStyles((theme) => ({
     },
     "& p.MuiTypography-root": {
       marginBottom: 12,
+      textAlign: "left",
       [theme.breakpoints.up("lg")]: {
         marginBottom: 0,
         marginRight: 24,
@@ -152,6 +157,60 @@ const useStyles = makeStyles((theme) => ({
       "&.copied": {
         backgroundColor: theme.palette.primary.darkViolet,
       },
+    },
+  },
+  title: {
+    marginTop: 88,
+    marginBottom: 56,
+    width: 400,
+    marginRight: "auto",
+    marginLeft: "auto",
+    "& h2": {
+      marginBottom: 20,
+    },
+  },
+  gridContainerCards: {
+    "& .MuiPaper-root": {
+      position: "relative",
+      zIndex: 2,
+      textAlign: "left",
+      paddingBottom: 40,
+    },
+    "& .MuiGrid-item:nth-child(2)": {
+      "& .MuiPaper-root": {
+        marginTop: 44,
+      },
+    },
+    "& .MuiGrid-item:nth-child(3)": {
+      "& .MuiPaper-root": {
+        marginTop: 88,
+      },
+    },
+    "& .MuiContainer-root": {
+      backgroundColor: "white",
+      borderRadius: 8,
+      padding: [0, 32],
+    },
+    "& .avatar": {
+      width: 88,
+      height: 88,
+      padding: 24,
+      marginBottom: -8,
+      backgroundColor: theme.palette.primary.darkViolet,
+      transform: "translateY(-44px)",
+    },
+    "& h3": {
+      marginBottom: 16,
+    },
+    "& p": {},
+    "& .connector": {
+      position: "absolute",
+      top: "50%",
+      right: "-20%",
+      zIndex: -1,
+      height: 10,
+      width: 100,
+      backgroundColor: theme.palette.primary.main,
     },
   },
 }));
@@ -272,6 +331,69 @@ export default function Main() {
               </Grid>
             </Grid>
           </Paper>
+          <div className={styles.title}>
+            <Typography className={styles.h2} variant="h2">
+              Advanced Statistics
+            </Typography>
+            <Typography variant="subtitle2">
+              Track how your links are performing across the web with our
+              advanced statistics dashboard.
+            </Typography>
+          </div>
+          <Grid className={styles.gridContainerCards} container spacing={3}>
+            <Grid item md={4}>
+              <Paper className={styles.card} elevation={0}>
+                <Container>
+                  <Avatar
+                    className="avatar"
+                    src={iconBrandRecognition}
+                    imgProps={{ role: "presentation" }}
+                  />
+                  <Typography variant="h3">Brand Recognition</Typography>
+                  <Typography variant="body1">
+                    Boost your brand recognition with each click. Generic links
+                    don't mean a thing. Branded links help instil confidence in
+                    your content.
+                  </Typography>
+                </Container>
+                <div className="connector"></div>
+              </Paper>
+            </Grid>
+            <Grid item md={4}>
+              <Paper className={styles.card} elevation={0}>
+                <Container>
+                  <Avatar
+                    className="avatar"
+                    src={iconDetailedRecords}
+                    imgProps={{ role: "presentation" }}
+                  />
+                  <Typography variant="h3">Detailed Records</Typography>
+                  <Typography variant="body1">
+                    Gain insights into who is clicking your links. Knowing when
+                    and where people engage with your content helps inform
+                    better
+                  </Typography>
+                </Container>
+                <div className="connector"></div>
+              </Paper>
+            </Grid>
+            <Grid item md={4}>
+              <Paper className={styles.card} elevation={0}>
+                <Container>
+                  <Avatar
+                    className="avatar"
+                    src={iconFullyCustomizable}
+                    imgProps={{ role: "presentation" }}
+                  />
+                  <Typography variant="h3">Fully Customizable</Typography>
+                  <Typography variant="body1">
+                    Improve brand awareness and content discoverability through
+                    customizable links, supercharging audience engagement.
+                  </Typography>
+                </Container>
+              </Paper>
+            </Grid>
+          </Grid>
         </Container>
       </section>
     </main>

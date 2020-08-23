@@ -34,9 +34,29 @@ const customizedTheme = createMuiTheme({
     fontFamily: "Poppins",
     h1: {
       letterSpacing: "-0.1rem",
+      fontSize: "2.65rem",
+      fontWeight: 700,
     },
     subtitle1: {
       fontSize: "1.15rem",
+      color: grayishViolet,
+    },
+    h2: {
+      fontSize: "1.65rem",
+      fontWeight: 700,
+    },
+    h3: {
+      fontSize: "1.35rem",
+      fontWeight: 700,
+    },
+    subtitle2: {
+      fontSize: "1.015rem",
+      color: grayishViolet,
+      lineHeight: 1.7,
+    },
+    body1: {
+      fontSize: ".935rem",
+      lineHeight: 1.7,
       color: grayishViolet,
     },
   },
