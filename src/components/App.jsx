@@ -3,6 +3,7 @@ import { makeStyles } from "@material-ui/core/styles";
 
 import Header from "./Header";
 import Main from "./Main";
+import PreFooter from "./PreFooter";
 
 const useStyles = makeStyles((theme) => ({
   cyan: {
@@ -41,6 +42,7 @@ export default function App() {
     <React.Fragment>
       <Header />
       <Main />
+      <PreFooter />
       <div className={styles.cyan}>Cyan</div>
       <div className={styles.darkViolet}>Dark violet</div>
       <div className={styles.red}>Red</div>

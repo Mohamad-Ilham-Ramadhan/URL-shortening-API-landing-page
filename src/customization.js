@@ -18,8 +18,6 @@ const grayishViolet = "hsl(257, 7%, 63%)";
 const veryDarkBlue = "hsl(255, 11%, 22%)";
 const veryDarkViolet = "hsl(260, 8%, 14%)";
 
-const theme = createMuiTheme({});
-
 const customizedTheme = createMuiTheme({
   breakpoints: {
     values: {
@@ -40,10 +38,6 @@ const customizedTheme = createMuiTheme({
     subtitle1: {
       fontSize: "1.15rem",
       color: grayishViolet,
-    },
-    h2: {
-      fontSize: "1.65rem",
-      fontWeight: 700,
     },
     h3: {
       fontSize: "1.35rem",
@@ -88,12 +82,7 @@ const customizedTheme = createMuiTheme({
         },
       },
     },
-    MuiContainer: {
-      root: {
-        paddingLeft: theme.spacing(3),
-        paddingRight: theme.spacing(3),
-      },
-    },
+
     MuiTypography: {
       root: {
         color: veryDarkViolet,
@@ -112,11 +101,6 @@ const customizedTheme = createMuiTheme({
         },
       },
     },
-    MuiPaper: {
-      rounded: {
-        borderRadius: theme.spacing(1),
-      },
-    },
     MuiOutlinedInput: {
       root: {
         backgroundColor: "white",
@@ -129,5 +113,23 @@ const customizedTheme = createMuiTheme({
     },
   },
 });
+customizedTheme.typography.h2 = {
+  fontSize: "1.65rem",
+  fontWeight: 700,
+  [customizedTheme.breakpoints.up("md")]: {
+    fontSize: "2.35rem",
+  },
+};
+customizedTheme.overrides.MuiContainer = {
+  root: {
+    paddingLeft: customizedTheme.spacing(3),
+    paddingRight: customizedTheme.spacing(3),
+  },
+};
+customizedTheme.overrides.MuiPaper = {
+  rounded: {
+    borderRadius: customizedTheme.spacing(1),
+  },
+};
 
 export default customizedTheme;
