@@ -54,7 +54,7 @@ const useStyles = makeStyles((theme) => ({
   content: {
     backgroundColor: lighten(theme.palette.neutral.grayishViolet, 0.875),
     textAlign: "center",
-    paddingBottom: 120,
+    paddingBottom: 80,
   },
   formShorten: {
     padding: theme.spacing(3),
@@ -176,6 +176,7 @@ const useStyles = makeStyles((theme) => ({
     },
   },
   gridContainerCards: {
+    marginTop: 72,
     [theme.breakpoints.up("md")]: {
       "& .MuiPaper-root": {
         textAlign: "left",
