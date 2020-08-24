@@ -15,11 +15,30 @@ import logo from "../images/logo-white.svg";
 const useStyles = makeStyles((theme) => ({
   root: {
     backgroundColor: theme.palette.neutral.veryDarkViolet,
-    padding: [70, 0],
+    textAlign: "center",
+    padding: [48, 0],
+    [theme.breakpoints.up("md")]: {
+      padding: [70, 0],
+    },
+  },
+  gridLinks: {
+    marginBottom: 32,
+  },
+  logo: {
+    display: "inline-block",
+    marginBottom: 48,
   },
   icons: {
-    color: "white",
-    marginRight: 24,
+    display: "inline-block",
+    "& svg": {
+      color: "white",
+      marginRight: 24,
+    },
+    "&:last-child": {
+      "& svg": {
+        marginRight: 0,
+      },
+    },
   },
   linkBold: {
     marginBottom: 20,
@@ -31,8 +50,11 @@ const useStyles = makeStyles((theme) => ({
   linkSmall: {
     marginBottom: 8,
     "& a": {
+      fontSize: ".95rem",
       color: theme.palette.neutral.gray,
-      fontSize: ".915rem",
+      [theme.breakpoints.up("md")]: {
+        fontSize: ".915rem",
+      },
     },
   },
 }));
@@ -43,12 +65,12 @@ export default function Footer() {
     <footer className={styles.root}>
       <Container>
         <Grid container>
-          <Grid item xs={4}>
-            <Link href="#">
+          <Grid item xs={12} md={4}>
+            <Link className={styles.logo} href="#">
               <img src={logo} alt="Home" />
             </Link>
           </Grid>
-          <Grid item xs>
+          <Grid className={styles.gridLinks} item xs={12} md>
             <Typography className={styles.linkBold}>
               <Link href="#">Features</Link>
             </Typography>
@@ -62,7 +84,7 @@ export default function Footer() {
               <Link href="#">Analitics</Link>
             </Typography>
           </Grid>
-          <Grid item xs>
+          <Grid className={styles.gridLinks} item xs={12} md>
             <Typography className={styles.linkBold}>
               <Link href="#">Resources</Link>
             </Typography>
@@ -76,7 +98,7 @@ export default function Footer() {
               <Link href="#">Support</Link>
             </Typography>
           </Grid>
-          <Grid item xs>
+          <Grid className={styles.gridLinks} item xs={12} md>
             <Typography className={styles.linkBold}>
               <Link href="#">Company</Link>
             </Typography>
@@ -93,19 +115,18 @@ export default function Footer() {
               <Link href="#">Contact</Link>
             </Typography>
           </Grid>
-          <Grid item xs={3}>
-            <Link href="#">
-              <IconFacebook className={styles.icons}></IconFacebook>
+          <Grid item xs={12} md={3}>
+            <Link className={styles.icons} href="#">
+              <IconFacebook></IconFacebook>
             </Link>
-            <Link href="#">
-              <IconTwitter className={styles.icons}></IconTwitter>
+            <Link className={styles.icons} href="#">
+              <IconTwitter></IconTwitter>
             </Link>
-            <Link href="#"></Link>
-            <Link href="#">
-              <IconPinterest className={styles.icons}></IconPinterest>
+            <Link className={styles.icons} href="#">
+              <IconPinterest></IconPinterest>
             </Link>
-            <Link href="#">
-              <IconInstagram className={styles.icons}></IconInstagram>
+            <Link className={styles.icons} href="#">
+              <IconInstagram></IconInstagram>
             </Link>
           </Grid>
         </Grid>
