@@ -113,9 +113,14 @@ const useStyles = makeStyles((theme) => ({
       lineHeight: "normal",
     },
   },
-  PaperShortenedLink: {
+  listShortenedLink: {
+    padding: 0,
+    margin: 0,
+    transform: "translateY(-54px)",
+  },
+  paperShortenedLink: {
     borderRadius: 6,
-    marginBottom: 16,
+    marginBottom: 24,
     "& p.MuiTypography-root": {
       [theme.breakpoints.up("lg")]: {
         fontSize: "1.2rem",
@@ -159,7 +164,7 @@ const useStyles = makeStyles((theme) => ({
     },
   },
   title: {
-    marginTop: 88,
+    marginTop: 36,
     marginBottom: 56,
     marginRight: "auto",
     marginLeft: "auto",
@@ -325,41 +330,79 @@ export default function Main() {
               </Grid>
             </Grid>
           </Paper>
-          <Paper className={styles.PaperShortenedLink} elevation={0}>
-            <Grid container>
-              <Grid
-                className={styles.gridShortenedLinkOriginal}
-                item
-                xs={12}
-                lg
-              >
-                <Typography>https://www.frontendmentor.io</Typography>
-              </Grid>
-              {upLg ? null : <Divider fullWidth />}
-              <Grid
-                className={styles.gridShortenedLinkShortened}
-                item
-                xs={12}
-                lg
-              >
-                <Typography>
-                  <Link href="https://rel.ink/kzw08n">
-                    https://rel.ink/kzw08n
-                  </Link>
-                </Typography>
-                <Button
-                  className={copied ? "copied" : null}
-                  onClick={onClickCopy}
-                  variant="contained"
-                  color="primary"
-                  disableElevation
-                  fullWidth={upLg ? false : true}
+          <ul className={styles.listShortenedLink}>
+            <Paper className={styles.paperShortenedLink} elevation={0}>
+              <Grid container>
+                <Grid
+                  className={styles.gridShortenedLinkOriginal}
+                  item
+                  xs={12}
+                  lg
                 >
-                  {copied ? "Copied!" : "Copy"}
-                </Button>
+                  <Typography>https://www.frontendmentor.io</Typography>
+                </Grid>
+                {upLg ? null : <Divider fullWidth />}
+                <Grid
+                  className={styles.gridShortenedLinkShortened}
+                  item
+                  xs={12}
+                  lg
+                >
+                  <Typography>
+                    <Link href="https://rel.ink/kzw08n">
+                      https://rel.ink/kzw08n
+                    </Link>
+                  </Typography>
+                  <Button
+                    className={copied ? "copied" : null}
+                    onClick={onClickCopy}
+                    variant="contained"
+                    color="primary"
+                    disableElevation
+                    fullWidth={upLg ? false : true}
+                  >
+                    {copied ? "Copied!" : "Copy"}
+                  </Button>
+                </Grid>
               </Grid>
-            </Grid>
-          </Paper>
+            </Paper>
+            <Paper className={styles.paperShortenedLink} elevation={0}>
+              <Grid container>
+                <Grid
+                  className={styles.gridShortenedLinkOriginal}
+                  item
+                  xs={12}
+                  lg
+                >
+                  <Typography>https://www.frontendmentor.io</Typography>
+                </Grid>
+                {upLg ? null : <Divider fullWidth />}
+                <Grid
+                  className={styles.gridShortenedLinkShortened}
+                  item
+                  xs={12}
+                  lg
+                >
+                  <Typography>
+                    <Link href="https://rel.ink/kzw08n">
+                      https://rel.ink/kzw08n
+                    </Link>
+                  </Typography>
+                  <Button
+                    className={copied ? "copied" : null}
+                    onClick={onClickCopy}
+                    variant="contained"
+                    color="primary"
+                    disableElevation
+                    fullWidth={upLg ? false : true}
+                  >
+                    {copied ? "Copied!" : "Copy"}
+                  </Button>
+                </Grid>
+              </Grid>
+            </Paper>
+          </ul>
+
           <div className={styles.title}>
             <Typography className={styles.h2} variant="h2">
               Advanced Statistics
