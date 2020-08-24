@@ -69,7 +69,6 @@ const useStyles = makeStyles((theme) => ({
     },
   },
   inputShorten: {
-    marginBottom: 16,
     width: "100%",
     "& .MuiInputBase-root": {
       color: "#232127",
