@@ -104,39 +104,41 @@ export default function Header() {
   return (
     <header>
       <AppBar className={styles.root} position="static" elevation={0}>
-        <Toolbar>
-          <Link className={styles.logo} href="#">
-            <img src={logo} role="navigation" />
-          </Link>
-          {upMd ? (
-            <React.Fragment>
-              <nav className={styles.navigation}>
-                <Link href="#">Features</Link>
-                <Link href="#">Pricing</Link>
-                <Link href="#">Resources</Link>
-              </nav>
-              <nav className={styles.authentication}>
-                <Link href="#">Login</Link>
-                <Button
-                  className="pill"
-                  variant="contained"
-                  color="primary"
-                  disableElevation
-                >
-                  Sign Up
-                </Button>
-              </nav>
-            </React.Fragment>
-          ) : (
-            <IconButton
-              className={styles.burger}
-              disableRipple
-              onClick={handleClick}
-            >
-              {show ? <CloseIcon /> : <MenuIcon />}
-            </IconButton>
-          )}
-        </Toolbar>
+        <Container>
+          <Toolbar disableGutters>
+            <Link className={styles.logo} href="#">
+              <img src={logo} role="navigation" />
+            </Link>
+            {upMd ? (
+              <React.Fragment>
+                <nav className={styles.navigation}>
+                  <Link href="#">Features</Link>
+                  <Link href="#">Pricing</Link>
+                  <Link href="#">Resources</Link>
+                </nav>
+                <nav className={styles.authentication}>
+                  <Link href="#">Login</Link>
+                  <Button
+                    className="pill"
+                    variant="contained"
+                    color="primary"
+                    disableElevation
+                  >
+                    Sign Up
+                  </Button>
+                </nav>
+              </React.Fragment>
+            ) : (
+              <IconButton
+                className={styles.burger}
+                disableRipple
+                onClick={handleClick}
+              >
+                {show ? <CloseIcon /> : <MenuIcon />}
+              </IconButton>
+            )}
+          </Toolbar>
+        </Container>
       </AppBar>
       {show && (
         <Container className={styles.mobileMenu} role="navigation">

@@ -31,6 +31,10 @@ const useStyles = makeStyles((theme) => ({
     order: 2,
     textAlign: "center",
     paddingTop: theme.spacing(3),
+    [theme.breakpoints.up("md")]: {
+      order: 1,
+      textAlign: "left",
+    },
 
     "& h1": {
       marginBottom: theme.spacing(2),
@@ -46,6 +50,9 @@ const useStyles = makeStyles((theme) => ({
   },
   gridIllustration: {
     order: 1,
+    [theme.breakpoints.up("md")]: {
+      order: 2,
+    },
   },
   illustration: {
     width: "148%",
@@ -275,7 +282,7 @@ export default function Main() {
       <section className={styles.hero}>
         <Container>
           <Grid container>
-            <Grid xs={12} className={styles.gridCta} item>
+            <Grid xs={12} md={6} className={styles.gridCta} item>
               <Typography component="h1" variant="h1">
                 More than just shorter links
               </Typography>
@@ -292,7 +299,7 @@ export default function Main() {
                 Get Started
               </Button>
             </Grid>
-            <Grid xs={12} className={styles.gridIllustration} item>
+            <Grid xs={12} md={6} className={styles.gridIllustration} item>
               <img
                 className={styles.illustration}
                 src={illustration}

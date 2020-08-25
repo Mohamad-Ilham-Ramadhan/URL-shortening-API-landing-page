@@ -30,15 +30,7 @@ const customizedTheme = createMuiTheme({
   },
   typography: {
     fontFamily: "Poppins",
-    h1: {
-      letterSpacing: "-0.1rem",
-      fontSize: "2.65rem",
-      fontWeight: 700,
-    },
-    subtitle1: {
-      fontSize: "1.15rem",
-      color: grayishViolet,
-    },
+
     h3: {
       fontSize: "1.35rem",
       fontWeight: 700,
@@ -113,6 +105,22 @@ const customizedTheme = createMuiTheme({
     },
   },
 });
+customizedTheme.typography.h1 = {
+  letterSpacing: "-0.1rem",
+  fontSize: "2.65rem",
+  fontWeight: 700,
+  [customizedTheme.breakpoints.up("md")]: {
+    fontSize: "5rem",
+    lineHeight: 1.1,
+  },
+};
+customizedTheme.typography.subtitle1 = {
+  fontSize: "1.15rem",
+  color: grayishViolet,
+  [customizedTheme.breakpoints.up("md")]: {
+    fontSize: "1.375rem",
+  },
+};
 customizedTheme.typography.h2 = {
   fontSize: "1.65rem",
   fontWeight: 700,
