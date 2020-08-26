@@ -73,6 +73,8 @@ const useStyles = makeStyles((theme) => ({
     transform: "translateY(-50%)",
     [theme.breakpoints.up("md")]: {
       backgroundImage: `url('${bgShortenDesktop}')`,
+      marginBottom: 8,
+      padding: [48, 62],
     },
   },
   inputShorten: {
