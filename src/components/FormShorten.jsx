@@ -33,11 +33,14 @@ const useStyles = makeStyles((theme) => ({
     transform: "translateY(-50%)",
     [theme.breakpoints.up("md")]: {
       backgroundImage: `url('${bgShortenDesktop}')`,
+      backgroundSize: "cover",
+
       marginBottom: 8,
       padding: [48, 62],
     },
   },
   inputShorten: {
+    position: "relative",
     width: "100%",
     "& .MuiInputBase-root": {
       color: "#232127",
@@ -63,11 +66,17 @@ const useStyles = makeStyles((theme) => ({
       },
     },
     "& .MuiTypography-root": {
+      // validation message
       color: theme.palette.secondary.main,
       textAlign: "left",
       fontStyle: "italic",
       fontSize: "0.75rem",
       marginTop: 5,
+      [theme.breakpoints.up("md")]: {
+        position: "absolute",
+        bottom: -32,
+        fontSize: "1rem",
+      },
     },
     [theme.breakpoints.up("md")]: {
       marginBottom: 0,
