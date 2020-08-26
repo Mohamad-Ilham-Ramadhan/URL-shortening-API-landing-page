@@ -39,6 +39,10 @@ const useStyles = makeStyles((theme) => ({
     "& svg": {
       color: "white",
       marginRight: 24,
+      "&:hover": {
+        color: theme.palette.primary.main,
+        textDecoration: "none",
+      },
     },
     "&:last-child": {
       "& svg": {
@@ -51,6 +55,10 @@ const useStyles = makeStyles((theme) => ({
     "& a": {
       color: "white",
       fontWeight: 700,
+      "&:hover": {
+        color: theme.palette.primary.main,
+        textDecoration: "none",
+      },
     },
   },
   linkSmall: {
@@ -58,6 +66,11 @@ const useStyles = makeStyles((theme) => ({
     "& a": {
       fontSize: ".95rem",
       color: theme.palette.neutral.gray,
+      "&:hover": {
+        color: theme.palette.primary.main,
+        textDecoration: "none",
+      },
+
       [theme.breakpoints.up("md")]: {
         fontSize: ".915rem",
       },
