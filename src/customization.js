@@ -133,6 +133,11 @@ customizedTheme.overrides.MuiContainer = {
     paddingLeft: customizedTheme.spacing(3),
     paddingRight: customizedTheme.spacing(3),
   },
+  maxWidthLg: {
+    [customizedTheme.breakpoints.up("lg")]: {
+      maxWidth: 1200,
+    },
+  },
 };
 customizedTheme.overrides.MuiPaper = {
   rounded: {
