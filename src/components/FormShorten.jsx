@@ -1,26 +1,15 @@
 import React, { useState } from "react";
-import { makeStyles, useTheme, lighten } from "@material-ui/core/styles";
-import useMediaQuery from "@material-ui/core/useMediaQuery";
-import Container from "@material-ui/core/Container";
+import { makeStyles } from "@material-ui/core/styles";
+import { fade } from "@material-ui/core/styles/colorManipulator";
 import Grid from "@material-ui/core/Grid";
-import Divider from "@material-ui/core/Divider";
 import Typography from "@material-ui/core/Typography";
-import Link from "@material-ui/core/Link";
 import Button from "@material-ui/core/Button";
 import Paper from "@material-ui/core/Paper";
 import InputBase from "@material-ui/core/InputBase";
 import FormControl from "@material-ui/core/FormControl";
-import Avatar from "@material-ui/core/Avatar";
 
-import Hero from "./MainHero";
-import Content from "./MainContent";
-
-// import illustration from "../images/illustration-working.svg";
 import bgShortenMobile from "../images/bg-shorten-mobile.svg";
 import bgShortenDesktop from "../images/bg-shorten-desktop.svg";
-import iconBrandRecognition from "../images/icon-brand-recognition.svg";
-import iconDetailedRecords from "../images/icon-detailed-records.svg";
-import iconFullyCustomizable from "../images/icon-fully-customizable.svg";
 
 const useStyles = makeStyles((theme) => ({
   formShorten: {
@@ -67,7 +56,7 @@ const useStyles = makeStyles((theme) => ({
     },
     "& .MuiTypography-root": {
       // validation message
-      color: theme.palette.secondary.main,
+      color: fade(theme.palette.secondary.main, 0.85),
       textAlign: "left",
       fontStyle: "italic",
       fontSize: "0.75rem",
@@ -75,7 +64,7 @@ const useStyles = makeStyles((theme) => ({
       [theme.breakpoints.up("md")]: {
         position: "absolute",
         bottom: -32,
-        fontSize: "1rem",
+        fontSize: "0.9rem",
       },
     },
     [theme.breakpoints.up("md")]: {
