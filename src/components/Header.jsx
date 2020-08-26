@@ -51,6 +51,11 @@ const useStyles = makeStyles((theme) => ({
       fontSize: ".925rem",
       fontWeight: 700,
       padding: [0, 16],
+
+      "&:hover": {
+        textDecoration: "none",
+        color: theme.palette.neutral.veryDarkViolet,
+      },
     },
   },
   authentication: {
@@ -60,6 +65,10 @@ const useStyles = makeStyles((theme) => ({
       fontSize: ".925rem",
       fontWeight: 700,
       paddingRight: 32,
+      "&:hover": {
+        textDecoration: "none",
+        color: theme.palette.neutral.veryDarkViolet,
+      },
     },
     "& .MuiButton-root": {
       padding: [8, 24],
