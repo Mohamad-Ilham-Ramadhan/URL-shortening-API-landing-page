@@ -26,23 +26,31 @@ const useStyles = makeStyles((theme) => ({
   hero: {
     overflow: "hidden",
     paddingBottom: 165,
+    [theme.breakpoints.up("md")]: {
+      paddingTop: 56,
+    },
   },
   gridCta: {
     order: 2,
     textAlign: "center",
     paddingTop: theme.spacing(3),
     [theme.breakpoints.up("md")]: {
+      display: "flex",
+      alignItems: "center",
       order: 1,
       textAlign: "left",
+      "& .MuiTypography-subtitle1": {
+        marginBottom: 32,
+      },
+      "& .MuiTypography-h1": {
+        marginBottom: 0,
+      },
     },
 
     "& h1": {
       marginBottom: theme.spacing(2),
     },
-    "& p": {
-      fontSize: "1.15rem",
-      marginBottom: theme.spacing(3),
-    },
+
     "& button": {
       padding: [10, 40],
       fontSize: "1.15rem",
@@ -56,6 +64,10 @@ const useStyles = makeStyles((theme) => ({
   },
   illustration: {
     width: "148%",
+    [theme.breakpoints.up("md")]: {
+      width: "130%",
+      transform: "translateX(88px)",
+    },
   },
   // Content
   content: {
@@ -285,21 +297,23 @@ export default function Main() {
         <Container>
           <Grid container>
             <Grid xs={12} md={6} className={styles.gridCta} item>
-              <Typography component="h1" variant="h1">
-                More than just shorter links
-              </Typography>
-              <Typography variant="subtitle1" component="p">
-                Build your brand's recognition and get detailed insights on how
-                your links are performing.
-              </Typography>
-              <Button
-                className="pill"
-                variant="contained"
-                color="primary"
-                disableElevation
-              >
-                Get Started
-              </Button>
+              <div>
+                <Typography component="h1" variant="h1">
+                  More than just shorter links
+                </Typography>
+                <Typography variant="subtitle1" component="p">
+                  Build your brand's recognition and get detailed insights on
+                  how your links are performing.
+                </Typography>
+                <Button
+                  className="pill"
+                  variant="contained"
+                  color="primary"
+                  disableElevation
+                >
+                  Get Started
+                </Button>
+              </div>
             </Grid>
             <Grid xs={12} md={6} className={styles.gridIllustration} item>
               <img

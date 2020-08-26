@@ -117,6 +117,7 @@ customizedTheme.typography.h1 = {
 customizedTheme.typography.subtitle1 = {
   fontSize: "1.15rem",
   color: grayishViolet,
+  lineHeight: 1.7,
   [customizedTheme.breakpoints.up("md")]: {
     fontSize: "1.375rem",
   },
