@@ -18,6 +18,7 @@ const useStyles = makeStyles((theme) => ({
     textAlign: "center",
     [theme.breakpoints.up("md")]: {
       backgroundImage: `url("${bgBoostDesktop}")`,
+      padding: [56, 0],
     },
   },
   h2: {
