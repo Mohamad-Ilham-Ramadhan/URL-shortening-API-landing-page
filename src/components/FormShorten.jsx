@@ -38,9 +38,15 @@ const useStyles = makeStyles((theme) => ({
       borderRadius: 6,
       fontSize: "1rem",
       lineHeight: 1.75,
+      [theme.breakpoints.up("md")]: {
+        padding: [16, 32],
+      },
       "&.validate": {
         border: `${theme.palette.secondary.main} solid 3px`,
         padding: [11.5, 16],
+        [theme.breakpoints.up("md")]: {
+          padding: [13, 32],
+        },
         "& input::placeholder": {
           color: theme.palette.secondary.main,
         },
@@ -48,9 +54,17 @@ const useStyles = makeStyles((theme) => ({
 
       "& input": {
         padding: 0,
+        [theme.breakpoints.up("md")]: {
+          fontSize: "1.3rem",
+          lineHeight: "normal",
+          height: "unset",
+        },
 
         "&::placeholder": {
           fontSize: "1rem",
+          [theme.breakpoints.up("md")]: {
+            fontSize: "1.3rem",
+          },
         },
       },
     },
@@ -63,7 +77,7 @@ const useStyles = makeStyles((theme) => ({
       marginTop: 5,
       [theme.breakpoints.up("md")]: {
         position: "absolute",
-        bottom: -32,
+        bottom: -30,
         fontSize: "0.9rem",
       },
     },
@@ -74,10 +88,15 @@ const useStyles = makeStyles((theme) => ({
   buttonShorten: {
     padding: 11,
     borderRadius: 6,
-
+    [theme.breakpoints.up("md")]: {
+      padding: [16, 0],
+    },
     "& span": {
       fontSize: "1.1rem",
       lineHeight: "normal",
+      [theme.breakpoints.up("md")]: {
+        fontSize: "1.3rem",
+      },
     },
   },
 }));
