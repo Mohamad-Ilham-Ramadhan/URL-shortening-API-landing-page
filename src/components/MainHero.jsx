@@ -37,6 +37,9 @@ const useStyles = makeStyles((theme) => ({
       alignItems: "center",
       order: 1,
       textAlign: "left",
+      "& .wrapper-cta": {
+        transform: "translateY(-24px)",
+      },
       "& .MuiTypography-subtitle1": {
         marginBottom: 32,
       },
@@ -76,7 +79,7 @@ export default function MainHero() {
       <Container>
         <Grid container>
           <Grid xs={12} lg={6} className={styles.gridCta} item>
-            <div>
+            <div className="wrapper-cta">
               <Typography component="h1" variant="h1">
                 More than just shorter links
               </Typography>
