@@ -19,6 +19,7 @@ const useStyles = makeStyles((theme) => ({
     padding: [48, 0],
     [theme.breakpoints.up("md")]: {
       padding: [70, 0],
+      textAlign: "left",
     },
   },
   gridLinks: {
