@@ -1,23 +1,14 @@
-import React, { useState } from "react";
-import { makeStyles, useTheme, lighten } from "@material-ui/core/styles";
-import useMediaQuery from "@material-ui/core/useMediaQuery";
+import React from "react";
+import { makeStyles, lighten } from "@material-ui/core/styles";
 import Container from "@material-ui/core/Container";
 import Grid from "@material-ui/core/Grid";
-import Divider from "@material-ui/core/Divider";
 import Typography from "@material-ui/core/Typography";
-import Link from "@material-ui/core/Link";
-import Button from "@material-ui/core/Button";
 import Paper from "@material-ui/core/Paper";
-import InputBase from "@material-ui/core/InputBase";
-import FormControl from "@material-ui/core/FormControl";
 import Avatar from "@material-ui/core/Avatar";
 
 import FormShorten from "./FormShorten";
 import ListShortenedLink from "./ListShortenedLink";
 
-// import illustration from "../images/illustration-working.svg";
-import bgShortenMobile from "../images/bg-shorten-mobile.svg";
-import bgShortenDesktop from "../images/bg-shorten-desktop.svg";
 import iconBrandRecognition from "../images/icon-brand-recognition.svg";
 import iconDetailedRecords from "../images/icon-detailed-records.svg";
 import iconFullyCustomizable from "../images/icon-fully-customizable.svg";
