@@ -28,6 +28,7 @@ const useStyles = makeStyles((theme) => ({
     paddingBottom: 165,
     [theme.breakpoints.up("md")]: {
       paddingTop: 56,
+      paddingBottom: 132,
     },
   },
   gridCta: {
@@ -74,6 +75,9 @@ const useStyles = makeStyles((theme) => ({
     backgroundColor: lighten(theme.palette.neutral.grayishViolet, 0.875),
     textAlign: "center",
     paddingBottom: 80,
+    [theme.breakpoints.up("md")]: {
+      paddingBottom: 110,
+    },
   },
   formShorten: {
     padding: theme.spacing(3),
@@ -138,6 +142,9 @@ const useStyles = makeStyles((theme) => ({
     padding: 0,
     margin: 0,
     transform: "translateY(-54px)",
+    [theme.breakpoints.up("md")]: {
+      marginBottom: 56,
+    },
   },
   paperShortenedLink: {
     borderRadius: 6,
@@ -194,13 +201,15 @@ const useStyles = makeStyles((theme) => ({
     },
     [theme.breakpoints.up("md")]: {
       width: 400,
+      marginTop: 0,
+      marginBottom: 64,
     },
   },
   gridContainerCards: {
     marginTop: 72,
     [theme.breakpoints.up("md")]: {
       "& .MuiPaper-root": {
-        textAlign: "left",
+        textAlign: "left !important",
       },
       "& .connector": {
         top: "50%",
@@ -210,10 +219,18 @@ const useStyles = makeStyles((theme) => ({
         bottom: "unset !important",
         height: "10px !important",
         transform: "unset !important",
+        [theme.breakpoints.up("md")]: {
+          top: "57%",
+        },
       },
       "& .MuiGrid-item:nth-child(2)": {
         "& .MuiPaper-root": {
           marginTop: 44,
+        },
+        "& .connector": {
+          [theme.breakpoints.up("md")]: {
+            top: "calc(57% - 44px)",
+          },
         },
       },
       "& .MuiGrid-item:nth-child(3)": {
@@ -263,6 +280,9 @@ const useStyles = makeStyles((theme) => ({
       marginRight: "auto",
       backgroundColor: theme.palette.primary.darkViolet,
       transform: "translateY(-44px)",
+      [theme.breakpoints.up("md")]: {
+        marginLeft: 0,
+      },
     },
     "& h3": {
       marginBottom: 16,
@@ -436,7 +456,8 @@ export default function Main() {
               advanced statistics dashboard.
             </Typography>
           </div>
-          <Grid className={styles.gridContainerCards} container spacing={3}>
+
+          <Grid className={styles.gridContainerCards} container spacing={4}>
             <Grid item md={4}>
               <Paper className={styles.card} elevation={0}>
                 <Container>
