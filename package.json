@@ -10,6 +10,7 @@
   "dependencies": {
     "@material-ui/core": "^4.11.0",
     "@material-ui/icons": "^4.9.1",
+    "axios": "^0.20.0",
     "clsx": "^1.1.1",
     "jss": "^10.3.0",
     "jss-plugin-expand": "^10.3.0",

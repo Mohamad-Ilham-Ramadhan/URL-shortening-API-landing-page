@@ -78,7 +78,7 @@ export default function ListItemShortenedLink({
           </Typography>
           <Button
             className={copied ? "copied" : null}
-            onClick={onClickCopy(original)}
+            onClick={onClickCopy(shortened)}
             variant="contained"
             color="primary"
             disableElevation
