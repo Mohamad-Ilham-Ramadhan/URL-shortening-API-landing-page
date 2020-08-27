@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { v4 as uuid } from "uuid";
 import axios from "axios";
 
@@ -8,10 +8,16 @@ import ListShortenedLink from "./ListShortenedLink";
 export default function ContainerShorten() {
   const [validate, setValidate] = useState(false);
   const [value, setValue] = useState("");
+  const [links, setLinks] = useState([]);
+
+  useEffect(() => {
+    setLinks(JSON.parse(localStorage.getItem("links")));
+    console.log(JSON.parse(localStorage.getItem("links")));
+  }, []);
+
   function onChange(e) {
     setValue(e.target.value);
   }
-  const [links, setLinks] = useState([]);
 
   function onClickShortenIt(input) {
     return function () {
