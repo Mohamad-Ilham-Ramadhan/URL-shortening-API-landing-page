@@ -7,6 +7,7 @@ import DialogContent from "@material-ui/core/DialogContent";
 import DialogTitle from "@material-ui/core/DialogTitle";
 import DialogContentText from "@material-ui/core/DialogContentText";
 import IconErrorOutline from "@material-ui/icons/ErrorOutline";
+import CircularProgress from "@material-ui/core/CircularProgress";
 
 import FormShorten from "./FormShorten";
 import ListShortenedLink from "./ListShortenedLink";
@@ -29,6 +30,9 @@ const useStyles = makeStyles((theme) => ({
       },
     },
   },
+  loading: {
+    transform: "translateY(-67px)",
+  },
 }));
 
 export default function ContainerShorten() {
@@ -36,6 +40,7 @@ export default function ContainerShorten() {
   const [value, setValue] = useState("");
   const [links, setLinks] = useState([]);
   const [showError, setShowError] = useState(false);
+  const [loading, setLoading] = useState(false);
   const styles = useStyles();
   useEffect(() => {
     if (JSON.parse(localStorage.getItem("links")) != null) {
@@ -52,11 +57,13 @@ export default function ContainerShorten() {
       if (input.length == 0) {
         setValidate(true);
       } else {
+        setLoading(true);
         axios
           .post("https://rel.ink/api/links/", {
             url: input,
           })
           .then((response) => {
+            setLoading(false);
             setLinks((links) => [
               ...links,
               {
@@ -80,6 +87,8 @@ export default function ContainerShorten() {
             );
           })
           .catch((response) => {
+            setLoading(false);
+
             setShowError(true);
           });
 
@@ -113,6 +122,11 @@ export default function ContainerShorten() {
         onClickShortenIt={onClickShortenIt}
         validate={validate}
       />
+      {loading && (
+        <div className={styles.loading}>
+          <CircularProgress color="primary" />
+        </div>
+      )}
       <ListShortenedLink links={links} onClickCopy={onClickCopy} />
       <Dialog
         open={showError}
