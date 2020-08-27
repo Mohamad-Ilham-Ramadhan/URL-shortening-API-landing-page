@@ -1,19 +1,45 @@
 import React, { useState, useEffect } from "react";
 import { v4 as uuid } from "uuid";
 import axios from "axios";
+import { makeStyles } from "@material-ui/core/styles";
+import Dialog from "@material-ui/core/Dialog";
+import DialogContent from "@material-ui/core/DialogContent";
+import DialogTitle from "@material-ui/core/DialogTitle";
+import DialogContentText from "@material-ui/core/DialogContentText";
+import IconErrorOutline from "@material-ui/icons/ErrorOutline";
 
 import FormShorten from "./FormShorten";
 import ListShortenedLink from "./ListShortenedLink";
+
+const useStyles = makeStyles((theme) => ({
+  errorMessage: {
+    "& .MuiPaper-root.MuiDialog-paper": {
+      backgroundColor: theme.palette.secondary.main,
+    },
+    "& .MuiTypography-root.MuiDialogContentText-root": {
+      color: "white",
+    },
+    "& .MuiDialogTitle-root h2": {
+      textAlign: "center",
+      color: "white",
+      fontSize: "0.25rem",
+
+      "& .MuiSvgIcon-root": {
+        fontSize: "3rem",
+      },
+    },
+  },
+}));
 
 export default function ContainerShorten() {
   const [validate, setValidate] = useState(false);
   const [value, setValue] = useState("");
   const [links, setLinks] = useState([]);
-
+  const [showError, setShowError] = useState(false);
+  const styles = useStyles();
   useEffect(() => {
     if (JSON.parse(localStorage.getItem("links")) != null) {
       setLinks(JSON.parse(localStorage.getItem("links")));
-      console.log(JSON.parse(localStorage.getItem("links")));
     }
   }, []);
 
@@ -52,6 +78,9 @@ export default function ContainerShorten() {
                 },
               ])
             );
+          })
+          .catch((response) => {
+            setShowError(true);
           });
 
         setValidate(false);
@@ -73,6 +102,9 @@ export default function ContainerShorten() {
       });
     };
   }
+  function handleClose() {
+    setShowError(false);
+  }
   return (
     <>
       <FormShorten
@@ -82,6 +114,22 @@ export default function ContainerShorten() {
         validate={validate}
       />
       <ListShortenedLink links={links} onClickCopy={onClickCopy} />
+      <Dialog
+        open={showError}
+        onClose={handleClose}
+        aria-labelledby="alert-dialog-title"
+        aria-describedby="alert-dialog-description"
+        className={styles.errorMessage}
+      >
+        <DialogTitle id="alert-dialog-title">
+          <IconErrorOutline />
+        </DialogTitle>
+        <DialogContent>
+          <DialogContentText id="alert-dialog-description">
+            Shorthen link failed!
+          </DialogContentText>
+        </DialogContent>
+      </Dialog>
     </>
   );
 }
