@@ -32,6 +32,18 @@ export default function ContainerShorten() {
                 copied: false,
               },
             ]);
+            localStorage.setItem(
+              "links",
+              JSON.stringify([
+                ...links,
+                {
+                  id: response.data.hashid,
+                  original: input,
+                  shortened: `https://rel.ink/${response.data.hashid}`,
+                  copied: false,
+                },
+              ])
+            );
           });
 
         setValidate(false);
