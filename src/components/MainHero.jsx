@@ -40,9 +40,7 @@ const useStyles = makeStyles((theme) => ({
       "& .wrapper-cta": {
         transform: "translateY(-24px)",
       },
-      "& .MuiTypography-subtitle1": {
-        marginBottom: 32,
-      },
+
       "& .MuiTypography-h1": {
         marginBottom: 0,
       },
@@ -51,7 +49,9 @@ const useStyles = makeStyles((theme) => ({
     "& h1": {
       marginBottom: theme.spacing(2),
     },
-
+    "& .MuiTypography-subtitle1": {
+      marginBottom: 32,
+    },
     "& button": {
       padding: [10, 40],
       fontSize: "1.15rem",
