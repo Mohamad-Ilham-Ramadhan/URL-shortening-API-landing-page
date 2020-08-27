@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from "react";
 import { v4 as uuid } from "uuid";
 import axios from "axios";
-import { makeStyles } from "@material-ui/core/styles";
+import { makeStyles, useTheme } from "@material-ui/core/styles";
+import useMediaQuery from "@material-ui/core/useMediaQuery";
 import Dialog from "@material-ui/core/Dialog";
 import DialogContent from "@material-ui/core/DialogContent";
 import DialogTitle from "@material-ui/core/DialogTitle";
@@ -32,12 +33,6 @@ const useStyles = makeStyles((theme) => ({
   },
   loading: {
     transform: "translateY(-67px)",
-    "& .MuiCircularProgress-root": {
-      [theme.breakpoints.up("md")]: {
-        width: 62,
-        height: 62,
-      },
-    },
   },
 }));
 
@@ -46,8 +41,10 @@ export default function ContainerShorten() {
   const [value, setValue] = useState("");
   const [links, setLinks] = useState([]);
   const [showError, setShowError] = useState(false);
-  const [loading, setLoading] = useState(true);
+  const [loading, setLoading] = useState(false);
   const styles = useStyles();
+  const theme = useTheme();
+  const upMd = useMediaQuery(theme.breakpoints.up("md"));
   useEffect(() => {
     if (JSON.parse(localStorage.getItem("links")) != null) {
       setLinks(JSON.parse(localStorage.getItem("links")));
@@ -130,7 +127,7 @@ export default function ContainerShorten() {
       />
       {loading && (
         <div className={styles.loading}>
-          <CircularProgress color="primary" />
+          <CircularProgress color="primary" size={upMd ? 62 : 40} />
         </div>
       )}
       <ListShortenedLink links={links} onClickCopy={onClickCopy} />
