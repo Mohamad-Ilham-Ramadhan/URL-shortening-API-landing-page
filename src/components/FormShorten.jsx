@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import { fade } from "@material-ui/core/styles/colorManipulator";
 import Grid from "@material-ui/core/Grid";
@@ -101,13 +101,14 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function FormShorten({
-  link,
-  onChange,
-  validate,
-  onClickShorten,
-}) {
+export default function FormShorten({ onClickShortenIt, validate }) {
   const styles = useStyles();
+  const [value, setValue] = useState("");
+
+  function onChange(e) {
+    setValue(e.target.value);
+  }
+
   return (
     <React.Fragment>
       <Paper className={styles.formShorten} elevation={0}>
@@ -115,7 +116,7 @@ export default function FormShorten({
           <Grid item xs={12} md={9}>
             <FormControl className={styles.inputShorten}>
               <InputBase
-                value={link}
+                value={value}
                 onChange={onChange}
                 placeholder="Shorten a link here..."
                 className={validate ? "validate" : null}
@@ -125,7 +126,7 @@ export default function FormShorten({
           </Grid>
           <Grid item xs={12} md={3}>
             <Button
-              onClick={onClickShorten}
+              onClick={onClickShortenIt(value)}
               className={styles.buttonShorten}
               variant="contained"
               color="primary"

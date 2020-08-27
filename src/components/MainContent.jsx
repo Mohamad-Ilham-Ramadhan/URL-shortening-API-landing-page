@@ -6,8 +6,7 @@ import Typography from "@material-ui/core/Typography";
 import Paper from "@material-ui/core/Paper";
 import Avatar from "@material-ui/core/Avatar";
 
-import FormShorten from "./FormShorten";
-import ListShortenedLink from "./ListShortenedLink";
+import ContainerShorten from "./ContainerShorten";
 
 import iconBrandRecognition from "../images/icon-brand-recognition.svg";
 import iconDetailedRecords from "../images/icon-detailed-records.svg";
@@ -123,25 +122,12 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function MainContent({
-  link,
-  validate,
-  copied,
-  onChange,
-  onClickShorten,
-  onClickCopy,
-}) {
+export default function MainContent() {
   const styles = useStyles();
   return (
     <section className={styles.root}>
       <Container>
-        <FormShorten
-          link={link}
-          validate={validate}
-          onChange={onChange}
-          onClickShorten={onClickShorten}
-        />
-        <ListShortenedLink copied={copied} onClickCopy={onClickCopy} />
+        <ContainerShorten />
 
         <div className={styles.title}>
           <Typography className={styles.h2} variant="h2">
