@@ -21,7 +21,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function ListShortenedLink({ links }) {
+export default function ListShortenedLink({ links, onClickCopy }) {
   const styles = useStyles();
 
   function copyToClipboard(text) {
@@ -38,6 +38,8 @@ export default function ListShortenedLink({ links }) {
           key={link.id}
           original={link.original}
           shortened={link.shortened}
+          copied={link.copied}
+          onClickCopy={onClickCopy}
         />
       ))}
     </ul>

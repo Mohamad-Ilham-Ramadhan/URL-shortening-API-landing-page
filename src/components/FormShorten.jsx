@@ -101,13 +101,13 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function FormShorten({ onClickShortenIt, validate }) {
+export default function FormShorten({
+  onClickShortenIt,
+  validate,
+  value,
+  onChange,
+}) {
   const styles = useStyles();
-  const [value, setValue] = useState("");
-
-  function onChange(e) {
-    setValue(e.target.value);
-  }
 
   return (
     <React.Fragment>

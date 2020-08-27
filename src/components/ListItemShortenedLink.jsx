@@ -55,19 +55,16 @@ const useStyles = makeStyles((theme) => ({
     },
   },
 }));
-export default function ListItemShortenedLink({ original, shortened }) {
+export default function ListItemShortenedLink({
+  original,
+  shortened,
+  copied,
+  onClickCopy,
+}) {
   const theme = useTheme();
-  const upLg = useMediaQuery(theme.breakpoints.up("lg"));
   const styles = useStyles();
-  const [copied, setCopied] = useState(false);
+  const upLg = useMediaQuery(theme.breakpoints.up("lg"));
 
-  function onClickCopy(text) {
-    return function () {
-      navigator.clipboard.writeText(text).then(function () {
-        setCopied(true);
-      });
-    };
-  }
   return (
     <Paper className={styles.paperShortenedLink} elevation={0}>
       <Grid container>
@@ -81,7 +78,7 @@ export default function ListItemShortenedLink({ original, shortened }) {
           </Typography>
           <Button
             className={copied ? "copied" : null}
-            onClick={onClickCopy(shortened)}
+            onClick={onClickCopy(original)}
             variant="contained"
             color="primary"
             disableElevation
