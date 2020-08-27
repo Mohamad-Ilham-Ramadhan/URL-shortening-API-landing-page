@@ -11,8 +11,10 @@ export default function ContainerShorten() {
   const [links, setLinks] = useState([]);
 
   useEffect(() => {
-    setLinks(JSON.parse(localStorage.getItem("links")));
-    console.log(JSON.parse(localStorage.getItem("links")));
+    if (JSON.parse(localStorage.getItem("links")) != null) {
+      setLinks(JSON.parse(localStorage.getItem("links")));
+      console.log(JSON.parse(localStorage.getItem("links")));
+    }
   }, []);
 
   function onChange(e) {
