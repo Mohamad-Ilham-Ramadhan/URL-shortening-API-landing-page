@@ -32,6 +32,12 @@ const useStyles = makeStyles((theme) => ({
   },
   loading: {
     transform: "translateY(-67px)",
+    "& .MuiCircularProgress-root": {
+      [theme.breakpoints.up("md")]: {
+        width: 62,
+        height: 62,
+      },
+    },
   },
 }));
 
@@ -40,7 +46,7 @@ export default function ContainerShorten() {
   const [value, setValue] = useState("");
   const [links, setLinks] = useState([]);
   const [showError, setShowError] = useState(false);
-  const [loading, setLoading] = useState(false);
+  const [loading, setLoading] = useState(true);
   const styles = useStyles();
   useEffect(() => {
     if (JSON.parse(localStorage.getItem("links")) != null) {

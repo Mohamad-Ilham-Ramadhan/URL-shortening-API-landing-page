@@ -21,6 +21,7 @@ const useStyles = makeStyles((theme) => ({
   gridShortenedLinkOriginal: {
     padding: [14, 16],
     display: "flex",
+    wordBreak: "break-word",
     [theme.breakpoints.up("lg")]: {
       alignItems: "center",
     },
@@ -68,11 +69,11 @@ export default function ListItemShortenedLink({
   return (
     <Paper className={styles.paperShortenedLink} elevation={0}>
       <Grid container>
-        <Grid className={styles.gridShortenedLinkOriginal} item xs={12} lg>
+        <Grid className={styles.gridShortenedLinkOriginal} item xs={12} lg={7}>
           <Typography>{original}</Typography>
         </Grid>
         {upLg ? null : <Divider fullWidth />}
-        <Grid className={styles.gridShortenedLinkShortened} item xs={12} lg>
+        <Grid className={styles.gridShortenedLinkShortened} item xs={12} lg={5}>
           <Typography>
             <Link href={shortened}>{shortened}</Link>
           </Typography>
