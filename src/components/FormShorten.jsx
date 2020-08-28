@@ -104,8 +104,13 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-function FormShorten({ onClickShortenIt, validate, value, onChange, addLink }) {
+function FormShorten({ onClickShortenIt, validate, addLink }) {
   const styles = useStyles();
+  const [value, setValue] = useState("");
+
+  function onChange(e) {
+    setValue(e.target.value);
+  }
 
   return (
     <React.Fragment>
@@ -124,7 +129,7 @@ function FormShorten({ onClickShortenIt, validate, value, onChange, addLink }) {
           </Grid>
           <Grid item xs={12} md={3}>
             <Button
-              onClick={() => addLink("https://www.frontendmentor.io")}
+              onClick={() => addLink(value)}
               className={styles.buttonShorten}
               variant="contained"
               color="primary"
@@ -142,7 +147,7 @@ function FormShorten({ onClickShortenIt, validate, value, onChange, addLink }) {
 
 const mapDispatch = (dispatch) => {
   return {
-    addLink: (original) => addLink(dispatch, original),
+    addLink: (original) => dispatch(addLink(original)),
   };
 };
 

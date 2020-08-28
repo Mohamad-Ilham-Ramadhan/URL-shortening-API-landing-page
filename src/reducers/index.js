@@ -1,10 +1,7 @@
-function links(state = [], action) {
-  switch (action.type) {
-    case "ADD_LINK":
-      return [...state, action.link];
-    default:
-      return state;
-  }
-}
+import { combineReducers } from "redux";
+import links from "./links";
+import input from "./input";
 
-export default links;
+const reducer = combineReducers({ links, input });
+
+export default reducer;
