@@ -11,7 +11,6 @@ import theme from "./customization";
 import App from "./components/App";
 
 import store from "./store";
-console.log(store.getState());
 const jss = create(preset());
 
 render(
