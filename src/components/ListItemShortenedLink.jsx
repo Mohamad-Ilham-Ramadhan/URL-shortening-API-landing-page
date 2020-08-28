@@ -1,4 +1,5 @@
-import React, { useState, useRef } from "react";
+import React from "react";
+import { connect } from "react-redux";
 import { makeStyles, useTheme } from "@material-ui/core/styles";
 import useMediaQuery from "@material-ui/core/useMediaQuery";
 import Grid from "@material-ui/core/Grid";
@@ -7,6 +8,8 @@ import Typography from "@material-ui/core/Typography";
 import Link from "@material-ui/core/Link";
 import Button from "@material-ui/core/Button";
 import Paper from "@material-ui/core/Paper";
+
+import copyLink from "../actions/copyLink";
 
 const useStyles = makeStyles((theme) => ({
   paperShortenedLink: {
@@ -56,12 +59,7 @@ const useStyles = makeStyles((theme) => ({
     },
   },
 }));
-export default function ListItemShortenedLink({
-  original,
-  shortened,
-  copied,
-  onClickCopy,
-}) {
+function ListItemShortenedLink({ original, shortened, copied, copyLink }) {
   const theme = useTheme();
   const styles = useStyles();
   const upLg = useMediaQuery(theme.breakpoints.up("lg"));
@@ -79,7 +77,7 @@ export default function ListItemShortenedLink({
           </Typography>
           <Button
             className={copied ? "copied" : null}
-            onClick={onClickCopy(shortened)}
+            onClick={() => copyLink(shortened)}
             variant="contained"
             color="primary"
             disableElevation
@@ -92,3 +90,11 @@ export default function ListItemShortenedLink({
     </Paper>
   );
 }
+
+function mapDispatch(dispatch) {
+  return {
+    copyLink: (shortened) => dispatch(copyLink(shortened)),
+  };
+}
+
+export default connect(null, mapDispatch)(ListItemShortenedLink);
