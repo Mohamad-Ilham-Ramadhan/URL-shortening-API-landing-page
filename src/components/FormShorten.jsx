@@ -13,6 +13,7 @@ import bgShortenMobile from "../images/bg-shorten-mobile.svg";
 import bgShortenDesktop from "../images/bg-shorten-desktop.svg";
 
 import addLink from "../actions/addLink";
+import onChange from "../actions/onChange";
 
 const useStyles = makeStyles((theme) => ({
   formShorten: {
@@ -104,13 +105,8 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-function FormShorten({ onClickShortenIt, validate, addLink }) {
+function FormShorten({ input, onChange, validate, addLink }) {
   const styles = useStyles();
-  const [value, setValue] = useState("");
-
-  function onChange(e) {
-    setValue(e.target.value);
-  }
 
   return (
     <React.Fragment>
@@ -119,7 +115,7 @@ function FormShorten({ onClickShortenIt, validate, addLink }) {
           <Grid item xs={12} md={9}>
             <FormControl className={styles.inputShorten}>
               <InputBase
-                value={value}
+                value={input}
                 onChange={onChange}
                 placeholder="Shorten a link here..."
                 className={validate ? "validate" : null}
@@ -129,7 +125,7 @@ function FormShorten({ onClickShortenIt, validate, addLink }) {
           </Grid>
           <Grid item xs={12} md={3}>
             <Button
-              onClick={() => addLink(value)}
+              onClick={() => addLink(input)}
               className={styles.buttonShorten}
               variant="contained"
               color="primary"
@@ -145,10 +141,20 @@ function FormShorten({ onClickShortenIt, validate, addLink }) {
   );
 }
 
-const mapDispatch = (dispatch) => {
+const mapState = (state) => {
   return {
-    addLink: (original) => dispatch(addLink(original)),
+    validate: state.validate,
+    input: state.input,
   };
 };
 
-export default connect(null, mapDispatch)(FormShorten);
+const mapDispatch = (dispatch) => {
+  return {
+    addLink: (original) => dispatch(addLink(original)),
+    onChange: (e) => {
+      dispatch(onChange(e));
+    },
+  };
+};
+
+export default connect(mapState, mapDispatch)(FormShorten);

@@ -13,6 +13,8 @@ import CircularProgress from "@material-ui/core/CircularProgress";
 import FormShorten from "./FormShorten";
 import ListShortenedLink from "./ListShortenedLink";
 
+import closeDialog from "../actions/closeDialog";
+
 const useStyles = makeStyles((theme) => ({
   errorMessage: {
     "& .MuiPaper-root.MuiDialog-paper": {
@@ -36,9 +38,14 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-function ContainerShorten({ listLink }) {
+function ContainerShorten({
+  listLink,
+  loadingRedux,
+  errorDialog,
+  closeDialog,
+}) {
+  console.log(listLink);
   const [validate, setValidate] = useState(false);
-  const [value, setValue] = useState("");
   const [links, setLinks] = useState([]);
   const [showError, setShowError] = useState(false);
   const [loading, setLoading] = useState(false);
@@ -50,10 +57,6 @@ function ContainerShorten({ listLink }) {
       setLinks(JSON.parse(localStorage.getItem("links")));
     }
   }, []);
-  console.log(listLink);
-  function onChange(e) {
-    setValue(e.target.value);
-  }
 
   function onClickShortenIt(input) {
     return function () {
@@ -119,21 +122,16 @@ function ContainerShorten({ listLink }) {
   }
   return (
     <>
-      <FormShorten
-        value={value}
-        onChange={onChange}
-        onClickShortenIt={onClickShortenIt}
-        validate={validate}
-      />
-      {loading && (
+      <FormShorten />
+      {loadingRedux && (
         <div className={styles.loading}>
           <CircularProgress color="primary" size={upMd ? 62 : 40} />
         </div>
       )}
       <ListShortenedLink links={links} onClickCopy={onClickCopy} />
       <Dialog
-        open={showError}
-        onClose={handleClose}
+        open={errorDialog}
+        onClose={closeDialog}
         aria-labelledby="alert-dialog-title"
         aria-describedby="alert-dialog-description"
         className={styles.errorMessage}
@@ -154,7 +152,15 @@ function ContainerShorten({ listLink }) {
 function mapState(state) {
   return {
     listLink: state.links,
+    loadingRedux: state.loading,
+    errorDialog: state.errorDialog,
   };
 }
 
-export default connect(mapState)(ContainerShorten);
+function mapDispatch(dispatch) {
+  return {
+    closeDialog: () => dispatch(closeDialog()),
+  };
+}
+
+export default connect(mapState, mapDispatch)(ContainerShorten);
