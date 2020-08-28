@@ -1,4 +1,5 @@
 import React from "react";
+import { Provider } from "react-redux";
 import { render } from "react-dom";
 import { create } from "jss";
 import preset from "jss-preset-default";
@@ -9,6 +10,8 @@ import theme from "./customization";
 
 import App from "./components/App";
 
+import store from "./store";
+console.log(store.getState());
 const jss = create(preset());
 
 render(
@@ -16,7 +19,9 @@ render(
     <StylesProvider jss={jss}>
       <ThemeProvider theme={theme}>
         <CssBaseline />
-        <App />
+        <Provider store={store}>
+          <App />
+        </Provider>
       </ThemeProvider>
     </StylesProvider>
   </React.StrictMode>,

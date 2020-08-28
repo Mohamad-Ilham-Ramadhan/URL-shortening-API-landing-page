@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { connect } from "react-redux";
 import { makeStyles } from "@material-ui/core/styles";
 import { fade } from "@material-ui/core/styles/colorManipulator";
 import Grid from "@material-ui/core/Grid";
@@ -10,6 +11,8 @@ import FormControl from "@material-ui/core/FormControl";
 
 import bgShortenMobile from "../images/bg-shorten-mobile.svg";
 import bgShortenDesktop from "../images/bg-shorten-desktop.svg";
+
+import addLink from "../actions/addLink";
 
 const useStyles = makeStyles((theme) => ({
   formShorten: {
@@ -101,12 +104,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function FormShorten({
-  onClickShortenIt,
-  validate,
-  value,
-  onChange,
-}) {
+function FormShorten({ onClickShortenIt, validate, value, onChange, addLink }) {
   const styles = useStyles();
 
   return (
@@ -126,7 +124,7 @@ export default function FormShorten({
           </Grid>
           <Grid item xs={12} md={3}>
             <Button
-              onClick={onClickShortenIt(value)}
+              onClick={() => addLink("https://www.frontendmentor.io")}
               className={styles.buttonShorten}
               variant="contained"
               color="primary"
@@ -141,3 +139,11 @@ export default function FormShorten({
     </React.Fragment>
   );
 }
+
+const mapDispatch = (dispatch) => {
+  return {
+    addLink: (original) => addLink(dispatch, original),
+  };
+};
+
+export default connect(null, mapDispatch)(FormShorten);

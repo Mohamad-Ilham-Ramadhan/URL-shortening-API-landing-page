@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { v4 as uuid } from "uuid";
+import { connect } from "react-redux";
 import axios from "axios";
 import { makeStyles, useTheme } from "@material-ui/core/styles";
 import useMediaQuery from "@material-ui/core/useMediaQuery";
@@ -36,7 +36,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function ContainerShorten() {
+function ContainerShorten({ listLink }) {
   const [validate, setValidate] = useState(false);
   const [value, setValue] = useState("");
   const [links, setLinks] = useState([]);
@@ -50,7 +50,7 @@ export default function ContainerShorten() {
       setLinks(JSON.parse(localStorage.getItem("links")));
     }
   }, []);
-
+  console.log(listLink);
   function onChange(e) {
     setValue(e.target.value);
   }
@@ -150,3 +150,11 @@ export default function ContainerShorten() {
     </>
   );
 }
+
+function mapState(state) {
+  return {
+    listLink: state.links,
+  };
+}
+
+export default connect(mapState)(ContainerShorten);
