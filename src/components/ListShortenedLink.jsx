@@ -1,4 +1,4 @@
-import React, { useRef } from "react";
+import React, { useEffect } from "react";
 import { connect } from "react-redux";
 import { makeStyles, useTheme } from "@material-ui/core/styles";
 import useMediaQuery from "@material-ui/core/useMediaQuery";
@@ -11,6 +11,8 @@ import Paper from "@material-ui/core/Paper";
 
 import ListItem from "./ListItemShortenedLink";
 
+import retrieveLinks from "../actions/retrieveLinks";
+
 const useStyles = makeStyles((theme) => ({
   listShortenedLink: {
     padding: 0,
@@ -22,8 +24,11 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-function ListShortenedLink({ links, onClickCopy }) {
+function ListShortenedLink({ links, retrieveLinks, onClickCopy }) {
   const styles = useStyles();
+  useEffect(() => {
+    retrieveLinks();
+  }, []);
 
   function copyToClipboard(text) {
     return function () {
@@ -52,5 +57,10 @@ function mapState(state) {
     links: state.links,
   };
 }
+function mapDispatch(dispatch) {
+  return {
+    retrieveLinks: () => dispatch(retrieveLinks()),
+  };
+}
 
-export default connect(mapState)(ListShortenedLink);
+export default connect(mapState, mapDispatch)(ListShortenedLink);

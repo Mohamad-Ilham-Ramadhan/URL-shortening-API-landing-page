@@ -1,7 +1,8 @@
 import axios from "axios";
 
 function addLink(original) {
-  return function (dispatch) {
+  return function (dispatch, getState) {
+    const { links } = getState();
     if (original.length == 0) {
       dispatch({ type: "SET_VALIDATE", validate: true });
     } else {
@@ -17,6 +18,18 @@ function addLink(original) {
               copied: false,
             },
           });
+          localStorage.setItem(
+            "links",
+            JSON.stringify([
+              ...links,
+              {
+                id: response.data.hashid,
+                original: original,
+                shortened: `https://rel.ink/${response.data.hashid}`,
+                copied: false,
+              },
+            ])
+          );
           dispatch({ type: "IS_SHORTENING", is: false });
         })
         .catch((error) => {
