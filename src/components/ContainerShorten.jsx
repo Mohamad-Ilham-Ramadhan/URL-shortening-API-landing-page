@@ -1,6 +1,5 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import { connect } from "react-redux";
-import axios from "axios";
 import { makeStyles, useTheme } from "@material-ui/core/styles";
 import useMediaQuery from "@material-ui/core/useMediaQuery";
 import Dialog from "@material-ui/core/Dialog";
@@ -45,81 +44,11 @@ function ContainerShorten({
   closeDialog,
 }) {
   console.log(listLink);
-  const [validate, setValidate] = useState(false);
-  const [links, setLinks] = useState([]);
-  const [showError, setShowError] = useState(false);
-  const [loading, setLoading] = useState(false);
+
   const styles = useStyles();
   const theme = useTheme();
   const upMd = useMediaQuery(theme.breakpoints.up("md"));
-  useEffect(() => {
-    if (JSON.parse(localStorage.getItem("links")) != null) {
-      setLinks(JSON.parse(localStorage.getItem("links")));
-    }
-  }, []);
 
-  function onClickShortenIt(input) {
-    return function () {
-      if (input.length == 0) {
-        setValidate(true);
-      } else {
-        setLoading(true);
-        axios
-          .post("https://rel.ink/api/links/", {
-            url: input,
-          })
-          .then((response) => {
-            setLoading(false);
-            setLinks((links) => [
-              ...links,
-              {
-                id: response.data.hashid,
-                original: input,
-                shortened: `https://rel.ink/${response.data.hashid}`,
-                copied: false,
-              },
-            ]);
-            localStorage.setItem(
-              "links",
-              JSON.stringify([
-                ...links,
-                {
-                  id: response.data.hashid,
-                  original: input,
-                  shortened: `https://rel.ink/${response.data.hashid}`,
-                  copied: false,
-                },
-              ])
-            );
-          })
-          .catch((response) => {
-            setLoading(false);
-
-            setShowError(true);
-          });
-
-        setValidate(false);
-        setValue("");
-      }
-    };
-  }
-
-  function onClickCopy(shortened) {
-    return function () {
-      navigator.clipboard.writeText(shortened).then(function () {
-        setLinks((links) =>
-          links.map((link) =>
-            link.shortened == shortened
-              ? { ...link, copied: true }
-              : { ...link, copied: false }
-          )
-        );
-      });
-    };
-  }
-  function handleClose() {
-    setShowError(false);
-  }
   return (
     <>
       <FormShorten />
@@ -128,7 +57,7 @@ function ContainerShorten({
           <CircularProgress color="primary" size={upMd ? 62 : 40} />
         </div>
       )}
-      <ListShortenedLink onClickCopy={onClickCopy} />
+      <ListShortenedLink />
       <Dialog
         open={errorDialog}
         onClose={closeDialog}

@@ -1,13 +1,6 @@
 import React, { useEffect } from "react";
 import { connect } from "react-redux";
-import { makeStyles, useTheme } from "@material-ui/core/styles";
-import useMediaQuery from "@material-ui/core/useMediaQuery";
-import Grid from "@material-ui/core/Grid";
-import Divider from "@material-ui/core/Divider";
-import Typography from "@material-ui/core/Typography";
-import Link from "@material-ui/core/Link";
-import Button from "@material-ui/core/Button";
-import Paper from "@material-ui/core/Paper";
+import { makeStyles } from "@material-ui/core/styles";
 
 import ListItem from "./ListItemShortenedLink";
 
@@ -24,19 +17,12 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-function ListShortenedLink({ links, retrieveLinks, onClickCopy }) {
+function ListShortenedLink({ links, retrieveLinks }) {
   const styles = useStyles();
   useEffect(() => {
     retrieveLinks();
   }, []);
 
-  function copyToClipboard(text) {
-    return function () {
-      navigator.clipboard.writeText(text).then(function () {
-        alert("copied!");
-      });
-    };
-  }
   return (
     <ul className={styles.listShortenedLink}>
       {links.map((link) => (
@@ -45,7 +31,6 @@ function ListShortenedLink({ links, retrieveLinks, onClickCopy }) {
           original={link.original}
           shortened={link.shortened}
           copied={link.copied}
-          onClickCopy={onClickCopy}
         />
       ))}
     </ul>

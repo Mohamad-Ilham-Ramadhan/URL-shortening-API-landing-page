@@ -3,7 +3,10 @@ export default function retrieveLinks() {
     if (JSON.parse(localStorage.getItem("links")) != null) {
       dispatch({
         type: "RETRIEVE_LINKS",
-        links: JSON.parse(localStorage.getItem("links")),
+        links: JSON.parse(localStorage.getItem("links")).map((link) => ({
+          ...link,
+          copied: false,
+        })),
       });
     }
   };
