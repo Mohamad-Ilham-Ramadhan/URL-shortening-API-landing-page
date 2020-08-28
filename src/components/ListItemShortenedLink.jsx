@@ -25,6 +25,7 @@ const useStyles = makeStyles((theme) => ({
     padding: [14, 16],
     display: "flex",
     wordBreak: "break-word",
+    textAlign: "left",
     [theme.breakpoints.up("lg")]: {
       alignItems: "center",
     },
