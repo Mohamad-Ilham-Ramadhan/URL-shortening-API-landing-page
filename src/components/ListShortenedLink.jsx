@@ -1,4 +1,5 @@
 import React, { useRef } from "react";
+import { connect } from "react-redux";
 import { makeStyles, useTheme } from "@material-ui/core/styles";
 import useMediaQuery from "@material-ui/core/useMediaQuery";
 import Grid from "@material-ui/core/Grid";
@@ -21,7 +22,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function ListShortenedLink({ links, onClickCopy }) {
+function ListShortenedLink({ links, onClickCopy }) {
   const styles = useStyles();
 
   function copyToClipboard(text) {
@@ -45,3 +46,11 @@ export default function ListShortenedLink({ links, onClickCopy }) {
     </ul>
   );
 }
+
+function mapState(state) {
+  return {
+    links: state.links,
+  };
+}
+
+export default connect(mapState)(ListShortenedLink);

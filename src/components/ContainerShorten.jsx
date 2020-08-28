@@ -128,7 +128,7 @@ function ContainerShorten({
           <CircularProgress color="primary" size={upMd ? 62 : 40} />
         </div>
       )}
-      <ListShortenedLink links={links} onClickCopy={onClickCopy} />
+      <ListShortenedLink onClickCopy={onClickCopy} />
       <Dialog
         open={errorDialog}
         onClose={closeDialog}

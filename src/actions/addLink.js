@@ -18,7 +18,6 @@ function addLink(original) {
             },
           });
           dispatch({ type: "IS_SHORTENING", is: false });
-          dispatch({ type: "SET_VALIDATE", validate: true });
         })
         .catch((error) => {
           dispatch({ type: "SET_VALIDATE", validate: true });
