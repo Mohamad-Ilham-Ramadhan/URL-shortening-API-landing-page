@@ -43,8 +43,6 @@ function ContainerShorten({
   errorDialog,
   closeDialog,
 }) {
-  console.log(listLink);
-
   const styles = useStyles();
   const theme = useTheme();
   const upMd = useMediaQuery(theme.breakpoints.up("md"));
